@@ -1,0 +1,6 @@
+<div class="container container-height">
+    <div class="row">
+        <app-task-manager-column (editTaskNotify) = "notifyTaskEdit($event)" class="col split-column" [column]="column" *ngFor="let column of columns">
+        </app-task-manager-column>
+    </div>
+</div>

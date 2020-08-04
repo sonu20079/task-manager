@@ -1,0 +1,22 @@
+<header>
+  Task Manager
+  <div class="container">
+      <button type="button" data-toggle="modal" (click)="open(mymodal)" class="btn btn-primary float-right mx-auto" data-target="#taskModal">Add Task</button>
+  </div>
+    
+</header>
+<app-task-manager (editNotify) = "notifyTaskEdit($event)"></app-task-manager>
+
+
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{(editTask ? 'Edit ': 'Add ')}} Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-task-form [editTask] = "editTask"></app-task-form>
+  </div>
+</ng-template>

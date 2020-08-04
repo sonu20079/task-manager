@@ -1,0 +1,15 @@
+.container-height {
+    position: relative;
+    height: calc(100vh - 0px);
+}
+
+.split-column {
+    border-right: 1px solid grey;
+    height: calc(100vh - 100px);
+    position: relative;
+    display: flex;
+}
+
+.split-column:last-child {
+    border: none;
+}

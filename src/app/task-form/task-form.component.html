@@ -1,0 +1,37 @@
+<div class="container">
+    <form #taskForm="ngForm" (submit)="submitForm(taskForm)">
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="model.title" name="title" placeholder="Task Title" required  ngModel #title="ngModel">
+            <div *ngIf="!title.valid && title.touched" class="validation-color">Title can't be blank</div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="model.description" name="description" placeholder="Task Description" required ngModel #description="ngModel">
+            <div *ngIf="!description.valid && description.touched" class="validation-color">Description can't be blank</div>
+        </div>
+        <div class="form-group" style="width: 100%">
+            <select name="priority" #priority="ngModel" [(ngModel)]="model.priority" required>
+                <option *ngFor="let priority of priorities" [ngValue]="priority.value">
+                    {{priority.value}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group" style="width: 100%">
+                <select name="column_type" #priority="ngModel" [(ngModel)]="model.column_type" required>
+                    <option *ngFor="let col of column_type" [ngValue]="col.value">
+                        {{col.value}}
+                    </option>
+                </select>
+            </div>
+        <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd"
+                         name="date" [(ngModel)]="model.date" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  </div>
+                </div>
+                </div>
+        <button [disabled] = "!taskForm.valid" class="btn btn-primary float-right">{{(editTask?.id ? 'Edit': 'Submit')}}</button>
+
+    </form>
+</div>
